@@ -129,9 +129,10 @@ zplane(1,e)
 
 
 %%
+%Kalman Filter
 Q = 1; 
 R = 100;
-%G = ?
+%%%G = 0
 
 [M,P,Z,E] = dlqe(A,G,C,Q,R);
 

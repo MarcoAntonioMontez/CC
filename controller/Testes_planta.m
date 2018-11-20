@@ -1,11 +1,11 @@
 % Sensor Data Conversion
-PotentiometerGain = 180/5.3145;
-ExtensometerGain = -3.1481;
+PotentiometerGain = 33.79;
+ExtensometerGain = -4.49;
 
 % System State-Space
-A = [3.11506910744011 -3.74010634305672 2.06382118501694 -0.438783949400328; 1 0 0 0; 0 1 0 0; 0 0 1 0];
+A = [3.3545 -4.3521 2.6058 -0.6082; 1 0 0 0; 0 1 0 0; 0 0 1 0];
 B = [1;0;0;0];
-C = [-0.0767099115028891 0.161398714293952 0 0];
+C = [-0.0657 0.1152 0 0];
 D = [0];
 
 % LQR
@@ -28,13 +28,13 @@ Nu = N(5,:);
 Nbar = Nu+K*Nx;
 
 % Open Simulink
-open_system('LQG.slx');
+open_system('Implementation.slx');
 
 % Set Parameters of Signal Generator
-set_param('LQG/Signal Generator','Waveform','square');
-set_param('LQG/Signal Generator','Amplitude','90');
-set_param('LQG/Signal Generator','Frequency','2');
+set_param('Implementation/Signal Generator','Waveform','square');
+set_param('Implementation/Signal Generator','Amplitude','30');
+set_param('Implementation/Signal Generator','Frequency','2');
 
 % Simulate
-sim('LQG.slx');
+sim('Implementation.slx');
 
